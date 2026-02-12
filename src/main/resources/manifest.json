@@ -1,0 +1,13 @@
+{
+    "Group": "de.wolfsline.hytale",
+    "Name": "HytaleTestPlugin",
+    "Version": "1.0.0",
+    "Description": "An example plugin for HyTale!",
+    "Authors": [
+        {
+        "Name": "Sebastian Wolf"
+        }
+    ],
+    "DisabledByDefault": false,
+    "Main": "de.wolfsline.hytale.MyPlugin"
+}
