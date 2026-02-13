@@ -43,14 +43,28 @@ public class SoilAddedListener extends RefSystem<ChunkStore> {
         Instant farFuture = now.plusSeconds(60L * 60 * 24 * 365 * 10); // 10 Jahre
 
         // nur setzen, wenn es NICHT schon weit genug ist
+        boolean writeToCommandBuffer = false;
         Instant cur = soil.getWateredUntil();
         if (cur == null || cur.isBefore(farFuture.minusSeconds(60))) {
             soil.setWateredUntil(farFuture);
 
-            // sicher persistieren
-            commandBuffer.putComponent(ref, TilledSoilBlock.getComponentType(), soil);
+            writeToCommandBuffer = true;
 
             // broadcast(world, "§bSoil wateredUntil gesetzt: " + farFuture);
+        }
+
+        Instant curDecay = soil.getDecayTime();
+        if (curDecay == null || curDecay.isBefore(farFuture.minusSeconds(60))) {
+            soil.setDecayTime(farFuture);
+
+            writeToCommandBuffer = true;
+
+            // broadcast(world, "§bSoil decayedUntil gesetzt: " + farFuture);
+        }
+
+        if (writeToCommandBuffer) {
+            // sicher persistieren
+            commandBuffer.putComponent(ref, TilledSoilBlock.getComponentType(), soil);
         }
     }
 
