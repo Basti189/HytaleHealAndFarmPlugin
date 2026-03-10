@@ -18,7 +18,7 @@ import java.time.Instant;
 
 public class SoilAddedListener extends RefSystem<ChunkStore> {
 
-    private static final Query<ChunkStore> QUERY = (Query<ChunkStore>)Query.and(new Query[] { (Query) BlockModule.BlockStateInfo.getComponentType(), (Query) TilledSoilBlock.getComponentType()});
+    private static final Query<ChunkStore> QUERY = Query.and(BlockModule.BlockStateInfo.getComponentType(), TilledSoilBlock.getComponentType());
 
     @NullableDecl
     @Override
@@ -29,13 +29,13 @@ public class SoilAddedListener extends RefSystem<ChunkStore> {
 
     @Override
     public void onEntityAdded(@NonNullDecl Ref<ChunkStore> ref, @NonNullDecl AddReason addReason, @NonNullDecl Store<ChunkStore> store, @NonNullDecl CommandBuffer<ChunkStore> commandBuffer) {
-        TilledSoilBlock soil = (TilledSoilBlock) commandBuffer.getComponent(ref, TilledSoilBlock.getComponentType());
+        TilledSoilBlock soil = commandBuffer.getComponent(ref, TilledSoilBlock.getComponentType());
         assert soil != null;
 
-        BlockModule.BlockStateInfo info = (BlockModule.BlockStateInfo) commandBuffer.getComponent(ref, BlockModule.BlockStateInfo.getComponentType());
+        BlockModule.BlockStateInfo info = commandBuffer.getComponent(ref, BlockModule.BlockStateInfo.getComponentType());
         assert info != null;
 
-        World world = ((ChunkStore) commandBuffer.getExternalData()).getWorld();
+        World world = commandBuffer.getExternalData().getWorld();
 
         // "weit genug in die Zukunft", aber nicht Instant.MAX
         WorldTimeResource time = world.getEntityStore().getStore().getResource(WorldTimeResource.getResourceType());

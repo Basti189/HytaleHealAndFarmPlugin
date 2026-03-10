@@ -50,7 +50,7 @@ public class WakeUpHealSystem extends RefChangeSystem<EntityStore, PlayerSomnole
                                PlayerSomnolence newC,
                                Store<EntityStore> store,
                                CommandBuffer<EntityStore> cb) {
-        //sendDebug(ref, store, "SET", newC);
+        // sendDebug(ref, store, "SET", newC);
         if (!(newC.getSleepState() instanceof PlayerSleep.MorningWakeUp)) return;
 
         EntityStatMap stats = store.getComponent(ref, EntityStatMap.getComponentType());

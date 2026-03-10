@@ -1,7 +1,7 @@
 {
     "Group": "de.wolfsline.hytale",
     "Name": "HytaleTestPlugin",
-    "Version": "1.0.0",
+    "Version": "2026.02.19-1a311a592",
     "Description": "An example plugin for HyTale!",
     "Authors": [
         {
@@ -9,5 +9,6 @@
         }
     ],
     "DisabledByDefault": false,
+    "ServerVersion": "*",
     "Main": "de.wolfsline.hytale.MyPlugin"
 }

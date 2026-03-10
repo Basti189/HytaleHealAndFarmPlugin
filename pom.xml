@@ -6,7 +6,7 @@
 
     <groupId>de.wolfsline.hytale</groupId>
     <artifactId>HytaleTestPlugin</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>2026.02.19-1a311a592</version>
 
     <properties>
         <maven.compiler.source>25</maven.compiler.source>
